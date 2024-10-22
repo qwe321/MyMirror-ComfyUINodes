@@ -133,6 +133,29 @@ class ClothCues:
         return ("short-sleeves", "long-sleeves", "elbow-length-sleeves")
 
 
+class MuteSwitch:
+
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "choice": ("INT", {"default": 0, "min": 0, "max": 1}),
+                "image0": ("IMAGE", ),
+                "image1": ("IMAGE", )
+            },
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("IMAGE",)
+
+    FUNCTION = "do_work"
+
+    CATEGORY = "MyMirror/Logic"
+
+    def do_work(self, choice, image1, image2):
+        return [ image1, image2 ][choice]
+
+
 
 NODE_CLASS_MAPPINGS = {
     'JsonFromString': JsonFromString,
@@ -141,7 +164,9 @@ NODE_CLASS_MAPPINGS = {
     'ClothCues': ClothCues,
 
     'JsonListContainsAny': JsonListContainsAny,
-    'JsonListContainsAll': JsonListContainsAll
+    'JsonListContainsAll': JsonListContainsAll,
+
+    "MuteSwitch": MuteSwitch
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -151,5 +176,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     'ClothCues': 'ClothCues',
 
     'JsonListContainsAny': 'List Contains Any',
-    'JsonListContainsAll': 'List Contains All'
+    'JsonListContainsAll': 'List Contains All',
+
+    "MuteSwitch": "Mute Switch"
 }
