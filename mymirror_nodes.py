@@ -153,7 +153,7 @@ class MuteSwitch:
     CATEGORY = "MyMirror/Logic"
 
     def do_work(self, choice, image0, image1):
-        return [ image0, image1 ][choice]
+        return ([ image0, image1 ][choice],)
 
 
 
